@@ -4,17 +4,37 @@ import { projects } from "../data/projects";
 export default function Home() {
   return (
     <main className="container py-5">
-      <header className="mb-5">
-        <h1>Raddish Portfolio</h1>
-        <p className="lead">
-          Welcome to my portfolio. Explore my projects below.
+      <header className="min-vh-100 d-flex flex-column justify-content-center py-5 mb-5">
+        <p className="text-uppercase text-secondary fw-semibold mb-2">
+          Welcome to my portfolio
+        </p>
+
+        <h1 className="display-4 fw-bold">
+          Hey, I'm Petter.
+          <span className="d-block">But you can call me Raddish.</span>
+        </h1>
+
+        <p className="lead text-secondary mt-3">
+          Front-end developer with a background in finance, passionate about
+          building thoughtful digital experiences.
         </p>
       </header>
 
       <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" className="mb-4">
-          My Projects
-        </h2>
+        <div className="mb-5">
+          <p className="text-uppercase text-secondary fw-semibold mb-2">
+            Selected work
+          </p>
+
+          <h2 id="projects-heading" className="display-5 fw-bold mb-3">
+            Projects I've built.
+          </h2>
+
+          <p className="lead text-secondary">
+            A selection of projects showcasing my skills, creativity, and
+            development journey.
+          </p>
+        </div>
 
         <div className="row g-4">
           {projects.map((project) => (

@@ -1,10 +1,35 @@
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
+import { useEffect } from "react";
 
 export default function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
-
   const project = projects.find((project) => project.slug === slug);
+
+  useEffect(() => {
+    document.title = project
+      ? `${project.title} | Raddish`
+      : "Project not found | Raddish";
+
+    const metaDescription = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    );
+
+    if (metaDescription) {
+      metaDescription.content = project
+        ? project.description
+        : "Explore front-end development projects by Raddish.";
+    }
+
+    return () => {
+      document.title = "Raddish | Front-End Developer";
+
+      if (metaDescription) {
+        metaDescription.content =
+          "Explore the portfolio and front-end development projects of Raddish.";
+      }
+    };
+  }, [project]);
 
   if (!project) {
     return (
@@ -18,17 +43,57 @@ export default function ProjectPage() {
 
   return (
     <main className="container py-5">
-      <Link to="/" className="d-inline-block mb-4">
-        ← Back to home
-      </Link>
+      <div className="mx-auto" style={{ maxWidth: "960px" }}>
+        <Link to="/" className="d-inline-block mb-4">
+          ← Back to home
+        </Link>
 
-      <h1>{project.title}</h1>
-      <p>{project.description || "Project description coming soon."}</p>
+        <header className="mb-5">
+          <h1 className="display-4 fw-bold mb-3">{project.title}</h1>
 
-      <section aria-label="Project details">
-        <h2>About this project</h2>
-        <p>{project.content || "Project details coming soon."}</p>
-      </section>
+          <p className="lead text-body-secondary">{project.description}</p>
+        </header>
+
+        <figure className="mt-4 mb-5">
+          <img
+            src={project.image}
+            alt={project.imageCaption}
+            className="img-fluid rounded-3 w-100"
+            loading="lazy"
+          />
+          <figcaption className="text-body-secondary small mt-2">
+            {project.imageCaption}
+          </figcaption>
+        </figure>
+
+        <section aria-labelledby="project-about-heading" className="mb-4">
+          <h2 id="project-about-heading" className="h4 fw-semibold mb-3">
+            About this project
+          </h2>
+
+          <p>{project.content}</p>
+        </section>
+
+        <div className="d-flex flex-wrap gap-3 mt-5 pt-3">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+          >
+            View live project ↗
+          </a>
+
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-light"
+          >
+            View on GitHub ↗
+          </a>
+        </div>
+      </div>
     </main>
   );
 }

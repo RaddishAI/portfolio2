@@ -7,8 +7,12 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">
-          Raddish
+        <Link to="/" className="navbar-brand">
+          <img
+            src="/assets/r-high-resolution-white-grayscale-transparent.png"
+            alt="Raddish – Home"
+            height={48}
+          />
         </Link>
 
         <div className="navbar-nav ms-auto">
