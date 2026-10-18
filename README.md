@@ -23,18 +23,19 @@ The project builds upon my previous portfolio, maintaining the Raddish identity 
 
 👉 [View Raddish Portfolio on Netlify](https://portfolio2raddish.netlify.app/)
 
----
-
 ## Features ✨
 
-- 🏠 **Responsive Homepage** – Introduction and overview of selected projects
-- 💼 **Project Showcase** – Three featured projects from my studies
-- 📄 **Project Details** – Dedicated pages with screenshots, descriptions, and relevant links
-- 🧭 **Navigation** – React Router navigation between the homepage and project pages
-- 📱 **Responsive Design** – Bootstrap-based layouts for different screen sizes
-- ♿ **Accessibility** – Semantic HTML, descriptive image alternatives, and accessible navigation
-- 🔎 **SEO** – Page-specific titles, meta descriptions, and custom favicon
-- 🖼️ **Optimized Images** – WebP images to improve loading performance
+- 🏠 **Home** – Personal introduction with an animated typewriter effect
+- 👤 **About Me** – Professional background, technical skills, and interests
+- 💼 **Work** – Dedicated project showcase featuring three course projects
+- 📄 **Project Details** – Individual project pages with screenshots, descriptions, and links
+- 📬 **Contact** – Functional Formspree contact form with submission feedback
+- 🧭 **Responsive Navigation** – Mobile hamburger menu and accessible navigation
+- 🎨 **Raddish Visual Identity** – Dark theme, terminal-inspired typography, green text, and yellow accents
+- 📱 **Responsive Design** – Layouts adapted for desktop, tablet, and mobile
+- ♿ **Accessibility** – Semantic HTML, descriptive image alternatives, and reduced-motion support
+- 🔎 **SEO** – Page-specific titles, meta descriptions, and favicon
+- 🖼️ **Optimized Images** – WebP images for improved loading performance
 - ⚠️ **404 Handling** – Dedicated page for invalid routes
 
 ---
