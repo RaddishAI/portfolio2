@@ -1,84 +1,88 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { projects } from "../data/projects";
+
+const introText = "HEY I AM PETTER || RADDISH\nCALL ME WHATEVER YOU LIKE";
 
 export default function Home() {
-  return (
-    <main className="container py-5">
-      <header className="min-vh-100 d-flex flex-column justify-content-center py-5 mb-5">
-        <p className="text-uppercase text-secondary fw-semibold mb-2">
-          Welcome to my portfolio
-        </p>
+  const [displayedText, setDisplayedText] = useState("");
 
-        <h1 className="display-4 fw-bold">
-          Hey, I'm Petter.
-          <span className="d-block">But you can call me Raddish.</span>
+  useEffect(() => {
+    document.title = "Raddish | Front-End Developer";
+
+    const description = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    );
+
+    if (description) {
+      description.content =
+        "Explore the portfolio of Raddish, a front-end developer with a background in finance.";
+    }
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion) {
+      return;
+    }
+
+    let characterIndex = 0;
+
+    const interval = window.setInterval(() => {
+      characterIndex += 1;
+      setDisplayedText(introText.slice(0, characterIndex));
+
+      if (characterIndex >= introText.length) {
+        window.clearInterval(interval);
+      }
+    }, 65);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const visibleText = prefersReducedMotion ? introText : displayedText;
+
+  return (
+    <main className="container">
+      <section
+        className="d-flex flex-column align-items-center justify-content-center text-center py-5"
+        style={{ minHeight: "calc(100svh - 80px)" }}
+        aria-labelledby="home-heading"
+      >
+        <h1
+          id="home-heading"
+          className="display-4 fw-bold mb-4"
+          style={{
+            color: "var(--raddish-green)",
+            fontFamily: '"Courier New", Courier, monospace',
+            whiteSpace: "pre-line",
+          }}
+        >
+          {visibleText}
+          {!prefersReducedMotion && (
+            <span className="typewriter-cursor" aria-hidden="true">
+              |
+            </span>
+          )}
         </h1>
 
-        <p className="lead text-secondary mt-3" style={{ maxWidth: "650px" }}>
+        <p className="lead mb-4" style={{ maxWidth: "650px" }}>
           Front-end developer with a background in finance, passionate about
           building thoughtful digital experiences.
         </p>
 
-        <a
-          href="#projects-heading"
-          className="btn btn-primary btn-lg mt-4 align-self-start"
-        >
-          View my work ↓
-        </a>
-      </header>
+        <div className="d-flex flex-wrap justify-content-center gap-4">
+          <Link to="/work" className="fw-semibold">
+            My works →
+          </Link>
 
-      <section aria-labelledby="projects-heading">
-        <div className="mb-5">
-          <p className="text-uppercase text-secondary fw-semibold mb-2">
-            Selected work
-          </p>
-
-          <h2 id="projects-heading" className="display-5 fw-bold mb-3">
-            Projects I've built.
-          </h2>
-
-          <p className="lead text-secondary">
-            A selection of projects showcasing my skills, creativity, and
-            development journey.
-          </p>
-        </div>
-
-        <div className="row g-4">
-          {projects.map((project) => (
-            <div className="col-12 col-md-6 col-lg-4" key={project.slug}>
-              <article className="card h-100 shadow-sm border-secondary">
-                {project.image && (
-                  <img
-                    src={project.image}
-                    className="card-img-top object-fit-cover"
-                    alt={project.imageCaption}
-                    loading="lazy"
-                    style={{ height: "220px" }}
-                  />
-                )}
-
-                <div className="card-body d-flex flex-column">
-                  <p className="text-uppercase text-body-secondary small fw-semibold mb-2">
-                    {project.category}
-                  </p>
-
-                  <h3 className="card-title h5">{project.title}</h3>
-
-                  <p className="card-text text-body-secondary">
-                    {project.description}
-                  </p>
-
-                  <Link
-                    to={`/projects/${project.slug}`}
-                    className="btn btn-primary mt-auto align-self-start"
-                    aria-label={`Read more about ${project.title}`}
-                  >
-                    Read more
-                  </Link>
-                </div>
-              </article>
-            </div>
-          ))}
+          <Link to="/contact" className="fw-semibold">
+            Get in touch →
+          </Link>
         </div>
       </section>
     </main>

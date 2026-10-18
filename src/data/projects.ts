@@ -44,7 +44,7 @@ export const projects: Project[] = [
     title: "Prasis",
     category: "Semester Project 2",
     description:
-      "An online auction platform where users can create listings, place bids, and manage their profiles. Built with JavaScript, SCSS, and the Noroff Auction API.",
+      "An auction platform built with JavaScript, SCSS, and the Noroff Auction API, featuring auction listings, detailed product views, and user profiles.",
     content:
       "Prasis is an online auction platform developed for Semester Project 2 at Noroff. Registered users can create auction listings, place bids, and manage their profiles, while visitors can browse and search for available auctions. The application integrates with the Noroff Auction API to manage listings, bids, and user data.",
     image: "/assets/projects/prasis.webp",
