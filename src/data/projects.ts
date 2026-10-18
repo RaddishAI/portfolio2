@@ -1,6 +1,7 @@
 export interface Project {
   slug: string;
   title: string;
+  category: string;
   description: string;
   content: string;
   image: string;
@@ -12,7 +13,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "css-frameworks",
-    title: "CSS Frameworks",
+    title: "Social App",
+    category: "CSS Frameworks",
     description:
       "A responsive social application created for the CSS Frameworks course assignment, with a focus on structured layout and consistent UI styling.",
     content:
@@ -25,7 +27,8 @@ export const projects: Project[] = [
   },
   {
     slug: "javascript-frameworks",
-    title: "JavaScript Frameworks",
+    title: "JSWS",
+    category: "JavaScript Frameworks",
     description:
       "A web application developed for the JavaScript Frameworks course assignment at Noroff, focusing on component-based development with React.",
     content:
@@ -38,7 +41,8 @@ export const projects: Project[] = [
   },
   {
     slug: "semester-project-2",
-    title: "Semester Project 2",
+    title: "Prasis",
+    category: "Semester Project 2",
     description:
       "An online auction platform where users can create listings, place bids, and manage their profiles. Built with JavaScript, SCSS, and the Noroff Auction API.",
     content:

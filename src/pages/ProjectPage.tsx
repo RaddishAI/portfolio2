@@ -49,6 +49,10 @@ export default function ProjectPage() {
         </Link>
 
         <header className="mb-5">
+          <p className="text-uppercase text-body-secondary small fw-semibold mb-2">
+            {project.category}
+          </p>
+
           <h1 className="display-4 fw-bold mb-3">{project.title}</h1>
 
           <p className="lead text-body-secondary">{project.description}</p>

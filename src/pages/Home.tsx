@@ -14,10 +14,17 @@ export default function Home() {
           <span className="d-block">But you can call me Raddish.</span>
         </h1>
 
-        <p className="lead text-secondary mt-3">
+        <p className="lead text-secondary mt-3" style={{ maxWidth: "650px" }}>
           Front-end developer with a background in finance, passionate about
           building thoughtful digital experiences.
         </p>
+
+        <a
+          href="#projects-heading"
+          className="btn btn-primary btn-lg mt-4 align-self-start"
+        >
+          View my work ↓
+        </a>
       </header>
 
       <section aria-labelledby="projects-heading">
@@ -39,21 +46,26 @@ export default function Home() {
         <div className="row g-4">
           {projects.map((project) => (
             <div className="col-12 col-md-6 col-lg-4" key={project.slug}>
-              <article className="card h-100">
+              <article className="card h-100 shadow-sm border-secondary">
                 {project.image && (
                   <img
                     src={project.image}
-                    className="card-img-top"
-                    alt={`Preview of ${project.title}`}
+                    className="card-img-top object-fit-cover"
+                    alt={project.imageCaption}
                     loading="lazy"
+                    style={{ height: "220px" }}
                   />
                 )}
 
                 <div className="card-body d-flex flex-column">
+                  <p className="text-uppercase text-body-secondary small fw-semibold mb-2">
+                    {project.category}
+                  </p>
+
                   <h3 className="card-title h5">{project.title}</h3>
 
-                  <p className="card-text">
-                    {project.description || "Project description coming soon."}
+                  <p className="card-text text-body-secondary">
+                    {project.description}
                   </p>
 
                   <Link
